@@ -4,7 +4,7 @@ import QtQuick.Controls 2.15
 
 import "qrc:/common"
 import "qrc:/pages"
-import "qrc:/pages/KVMResPage"  //坐席资源页面
+import "qrc:/pages/KVMResPage"
 
 import "qrc:/pages/QianProjectPages"
 import "qrc:/pages/QianProjectPages/QianMergeWatermelonPage"
@@ -26,12 +26,15 @@ StackLayout {
     }
 
 
-    //坐席功能页面
-    // KVMResPage {
-    //     property string name: qsTr("trKVMResPageTitle")
-    //     width: stack.width
-    //     height: stack.height
-    // }
+    //坐席资源页面
+    KVMResPage {
+        property string name: qsTr("trKVMResPageTitle")
+        width: stack.width
+        height: stack.height
+    }
+
+
+
 
 
     //以下是示例页面

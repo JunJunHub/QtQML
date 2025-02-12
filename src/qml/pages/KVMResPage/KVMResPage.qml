@@ -7,200 +7,39 @@ import QtGraphicalEffects 1.14
 import "qrc:/common/Base"
 import "qrc:/common/KVMSkin"
 
-Item {
-    property int leftWidth: 182
-    property int fontsize: 19
+Rectangle {
+    id: mainPage
+    width: g_rootWindow.width
+    height: g_rootWindow.height
+    color: "transparent"
 
-    ColumnLayout {
-        anchors.fill: parent
-        anchors.rightMargin: 60
-        anchors.topMargin: 30
-        anchors.bottomMargin: 30
-        anchors.leftMargin: 60
-        spacing: 10
+    Component.onCompleted: { timer.start() }
 
-        RowLayout {
-            YaheiText {
-                text: "Buttons"
-                font.pixelSize: fontsize
-                Layout.preferredWidth: leftWidth
-                Layout.alignment: Qt.AlignTop | Qt.AlignLeft
-            }
-            ColumnLayout {
-                spacing: 20
-                RowLayout {
-                    spacing: 20
-                    SkinBaseButton {
-                      font.pixelSize:  14
-                      backRadius: 4
-                      text: "SkinBtn1"
+    //当前日期时间
+    function currentDateTime(){
+        return Qt.formatDateTime(new Date(), "  hh:mm:ss\nM月d日 ddd");
+    }
 
-                    }
-                    SkinBaseButton2 {
-                        font.pixelSize:  14
-                        backRadius: 4
-                        text: "SkinBtn2"
-                    }
-                }
+    //定时器
+    Timer {
+        id: timer
+        repeat: true   //重复
+        interval: 1000 //间隔(单位毫秒)
+        triggeredOnStart:true //启动时立即触发，而不是等待 1 秒后触发
+        onTriggered:  textDateTime.text = currentDateTime();
+    }
 
-                RowLayout {
-                    spacing: 20
-                    BaseButton {
-                        text: "Blue"
-                        Layout.preferredHeight: 28
-                        Layout.preferredWidth: 78
-                        font.pixelSize:  14
-                        backRadius: 4
-                        bckcolor: "#4785FF"
-                    }
+    //显示系统当前时间
+    Label {
+        id: textDateTime
+        text: currentDateTime();
+        anchors.centerIn: parent
+    }
 
-                    BaseButton {
-                      bckcolor: "#EC3315"
-                      Layout.preferredHeight: 28
-                      Layout.preferredWidth: 78
-                      font.pixelSize:  14
-                      backRadius: 4
-                      text: "Red"
-
-                    }
-
-                    BaseButton {
-                        text: "Yellow"
-                        Layout.preferredHeight: 28
-                        Layout.preferredWidth: 78
-                        font.pixelSize:  14
-                        backRadius: 4
-                        bckcolor: "#ED9709"
-                    }
-                }
-            }
-        }
-
-        Rectangle {
-            height: 1
-            color: tingeOpacityColor
-            Layout.fillWidth: true
-            Layout.topMargin: 12
-        }
-
-        RowLayout {
-            YaheiText {
-                text: "RadioButton"
-                font.pixelSize: fontsize
-                Layout.preferredWidth: leftWidth
-                Layout.alignment: Qt.AlignTop | Qt.AlignLeft
-                Layout.topMargin: 12
-            }
-            ColumnLayout {
-                RadioButton {
-                  font.pixelSize: fontsize - 2
-                  indicator.width: 18
-                  indicator.height: 18
-
-                  font.family: "Microsoft Yahei"
-                  text: "Option 1"
-
-                }
-                RadioButton {
-                  font.pixelSize: fontsize - 2
-                  indicator.width: 18
-                  indicator.height: 18
-                  font.family: "Microsoft Yahei"
-                  text: "Option 2"
-                }
-                RadioButton {
-                  enabled: false
-                  font.pixelSize: fontsize - 2
-                  indicator.width: 18
-                  indicator.height: 18
-                  font.family: "Microsoft Yahei"
-                  text: "Option 3"
-                }
-
-            }
-        }
-
-        Rectangle {
-            height: 1
-            color: tingeOpacityColor
-            Layout.fillWidth: true
-        }
-
-        RowLayout {
-            YaheiText {
-                text: "CheckBox"
-                font.pixelSize: fontsize
-                Layout.preferredWidth: leftWidth
-                Layout.alignment: Qt.AlignTop | Qt.AlignLeft
-                Layout.topMargin: 12
-
-            }
-            ColumnLayout {
-                BaseCheckBox {
-                  font.pixelSize: fontsize - 2
-                  text: "Option 1"
-
-                }
-                BaseCheckBox {
-                  font.pixelSize: fontsize - 2
-                  text: "Option 2"
-                }
-                BaseCheckBox {
-                  enabled: false
-                  font.pixelSize: fontsize - 2
-                  text: "Option 3"
-                }
-
-            }
-        }
-
-        Rectangle {
-            height: 1
-            color: tingeOpacityColor
-            Layout.fillWidth: true
-        }
-
-        RowLayout {
-            YaheiText {
-                text: "Switch"
-                font.pixelSize: fontsize
-                Layout.preferredWidth: leftWidth
-                Layout.alignment: Qt.AlignTop | Qt.AlignLeft
-                Layout.topMargin: 12
-
-            }
-
-            RowLayout {
-                spacing: 20
-                Switch {
-                  font.pixelSize: fontsize - 2
-                  indicator.height: 18
-                  font.family: "Microsoft Yahei"
-                  text: "Blue"
-                  Material.accent: "#4785FF"
-                }
-                Switch {
-                  font.pixelSize: fontsize - 2
-                  indicator.height: 18
-                  font.family: "Microsoft Yahei"
-                  text: "Red"
-                  Material.accent: "#EC3315"
-                }
-                Switch {
-                  enabled: false
-                  font.pixelSize: fontsize - 2
-                  indicator.height: 18
-                  font.family: "Microsoft Yahei"
-                  text: "Disable"
-
-                }
-            }
-        }
-
-
-        Item {
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-        }
+    Button {
+        text: "退出登录"
+        anchors.top: textDateTime.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        onClicked: g_RootPageLoader.sourceComponent = loginPage
     }
 }

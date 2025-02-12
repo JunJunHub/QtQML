@@ -106,7 +106,6 @@ Item {
                     console.log("ws connect url:", url)
 
                     //切换页面
-                    //g_RootPageLoader.sourceComponent = mainPage
                     g_RootPageLoader.sourceComponent = mainWinEntry;
                     _loginPageLoader.sourceComponent = undefined; // 卸载登录页
                 }

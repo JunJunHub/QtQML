@@ -25,14 +25,14 @@ ApplicationWindow {
     Material.theme: skin.light ? Material.Light : Material.Dark
     Material.foreground: tingeColor
     visible: true
-    visibility: Window.Minimized
-    //visibility: Window.FullScreen
+    //visibility: Window.Minimized
+    visibility: Window.FullScreen
     //color: "transparent"
     //flags: Qt.FramelessWindowHint
     title: g_titleStr
     font.pixelSize: dp(30);  // 全局字体 ApplicationWindow
-    width: 1130 //1920
-    height: 730 //1080
+    width: 1920
+    height: 1080
     minimumWidth: 1130
     minimumHeight: 730
 
@@ -84,8 +84,23 @@ ApplicationWindow {
         sourceComponent: loginPage
     }
     Component{ id: loginPage; KVMLogonPage {} }
-    Component{ id: mainPage; TestMainPage {} }
-    Component{ id: mainWinEntry; KVMMainWindowEntry {} }
+    Component{ id: mainWinEntry; KVMMainWindowEntry {
+            //主功能界面入口
+            //TODO 根据运行环境，调整主界面布局
+            //     在嵌入式边端设备，rootWindow 始终全屏。主功能区居中，并占 rootWindow 的 3/5
+            //     在普通的桌面系统，rootWindow 设置大小。主功能区填充整个 rootWindow
+
+            anchors.fill: parent //将主功能区矩形填充整个根窗口
+
+            // 将主功能区矩形锚定在父项中央
+            // width: g_rootWindow.width * 0.80
+            // height: g_rootWindow.height * 0.80
+            // anchors.centerIn: parent
+
+            anchors.margins: g_rootWindow.maximized ? 0 : 8
+            radius: g_rootWindow.maximized ? 0 : 4
+        }
+    }
 
 
     //全局消息提示组件

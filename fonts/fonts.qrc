@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>FangZhengHeiTi-GBK-1.ttf</file>
+        <file>fontello.ttf</file>
+    </qresource>
+</RCC>

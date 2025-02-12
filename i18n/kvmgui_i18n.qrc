@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qm/kvmgui_en_US.qm</file>
+        <file>qm/kvmgui_zh_CN.qm</file>
+    </qresource>
+</RCC>

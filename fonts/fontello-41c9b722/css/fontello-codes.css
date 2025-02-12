@@ -1,0 +1,23 @@
+
+.icon-user:before { content: '\e800'; } /* '' */
+.icon-link:before { content: '\e801'; } /* '' */
+.icon-eye-off:before { content: '\e802'; } /* '' */
+.icon-eye:before { content: '\e803'; } /* '' */
+.icon-cog:before { content: '\e804'; } /* '' */
+.icon-lock-open:before { content: '\e805'; } /* '' */
+.icon-lock:before { content: '\e806'; } /* '' */
+.icon-cancel-circled:before { content: '\e807'; } /* '' */
+.icon-home:before { content: '\e808'; } /* '' */
+.icon-trash-empty:before { content: '\e809'; } /* '' */
+.icon-location:before { content: '\e80a'; } /* '' */
+.icon-volume-off:before { content: '\e80b'; } /* '' */
+.icon-volume-down:before { content: '\e80c'; } /* '' */
+.icon-volume-up:before { content: '\e80d'; } /* '' */
+.icon-bell-alt:before { content: '\f0f3'; } /* '' */
+.icon-desktop:before { content: '\f108'; } /* '' */
+.icon-mic:before { content: '\f130'; } /* '' */
+.icon-mute:before { content: '\f131'; } /* '' */
+.icon-lock-open-alt:before { content: '\f13e'; } /* '' */
+.icon-bell-off:before { content: '\f1f6'; } /* '' */
+.icon-bell-off-empty:before { content: '\f1f7'; } /* '' */
+.icon-trash:before { content: '\f1f8'; } /* '' */
